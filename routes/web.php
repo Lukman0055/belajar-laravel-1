@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('hallo', function () {
     return 'Halo ini Aplikasi Laravel Pertama Saya'.
     '<br>Laravel Is Magical Framework';
@@ -46,7 +50,7 @@ Route::get('about/profil/perry', function () {
     'Kelas : XI TKJ 1';
 });
 
-//route parameter
+// route parameter
 Route::get('biodata/{nama}',function($a){
     return 'Halo ini biodata '.$a;
 });
@@ -55,4 +59,80 @@ Route::get('autobiografi/{nama}/{alamat}/{umur}',function($a,$b,$c){
     return  'Nama : '.$a.
             '<br>Alamat : '.$b.
             '<br>Umur : '.$c.' thn';
+});
+
+Route::get('nama/{param?}',function($a="Lukman")
+{
+        return 'Your Name Is '.$a;
+});
+
+Route::get('pesan/{makan?}/{minum?}/{harga?}',function($a = null,$b = null,$c = null)
+{
+        if (isset($a)) {
+            echo "Anda memesan $a";
+        }
+        if (isset($b)) {
+            echo " & $b";
+        }
+        if (isset($c)) {
+                if ($c >= 35000) {
+                    $sz = "large";
+                }
+                elseif ($c >= 25000) {
+                    $sz = "medium";
+                }
+                elseif ($c > 0) {
+                    $sz = "small";
+                }
+                else {
+                    return " Harga tidak valid";
+                }
+                    echo " Size $sz dengan harga $c";
+        }
+        if (!$a && !$b) {
+            return "Silahkan Pesan Terlebih Dahulu";
+        }
+});
+
+Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
+{
+        if (isset($a)) {
+            echo "Nama Anda $a<br>";
+        }
+            if (isset($b)) {
+                    if ($b >= 76 && $b <= 100) {
+                        $sz = "Anda harus turun berat badan";
+                    }
+                    elseif ($b >= 65 && $b <= 75) {
+                        $sz = "Berat badan anda ideal";
+                    }
+                    elseif ($b >= 50 && $b <= 64) {
+                        $sz = "Naikan berat badan anda";
+                    }
+                    elseif ($b >= 1 && $b <= 50) {
+                        $sz = "Anda kurang nutrisi";
+                    }
+                    else {
+                        return " berat tidak valid";
+                    }
+                        echo " $sz<br>";
+            }
+            if (isset($c)) {
+                if ($b >= 50 && $b <= 60) {
+                    $sz = "perwira";
+                }
+                elseif ($b >= 40) {
+                    $sz = "laksamana";
+                }
+                elseif ($b >= 30) {
+                    $sz = "jendral";
+                }
+                else {
+                    return " umur tidak valid";
+                }
+                    echo " Pangkat anda $sz";
+        }
+        if (!$a && !$b) {
+            return "Silahkan Isi Terlebih Dahulu";
+        }
 });
