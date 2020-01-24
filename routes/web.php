@@ -139,7 +139,7 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
 
 //akses model post
         Route::get('/testmodel', function() {
-            $query = App\Post::all() ;
+            $query = App\siswa::all() ;
             return $query;
             });
         Route::get('/testmodel/1', function() {
@@ -168,3 +168,29 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
             return $post;
             // check record baru di database
         });
+
+
+            Route::get('barang/ambil3', function() {
+                $query = App\Barang::all()
+                ->take(3);
+                return $query;
+                });
+
+            Route::get('barang/select', function() {
+                $query = App\Barang::select('Nama_brg','Nomor_brg','Stok')->first();
+                return $query;
+                });
+
+            Route::get('barang/tambah/{Nama_brg}/{Nomor_brg}/{Berat_brg}/{Deskripsi}/{Jenis_brg}/{Harga_brg}/{Stok}',
+            function($Nama,$Nomor,$Berat,$Deskripsi,$Jenis,$Harga,$Stok) {
+                $post = new App\Barang;
+                $post->Nama_brg  = $Nama;
+                $post->Nomor_brg = $Nomor;
+                $post->Berat_brg = $Berat;
+                $post->Deskripsi = $Deskripsi;
+                $post->Jenis_brg = $Jenis;
+                $post->Harga_brg = $Harga;
+                $post->Stok = $Stok;
+                $post->save();
+                return $post;
+            });

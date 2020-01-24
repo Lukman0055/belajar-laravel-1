@@ -21,7 +21,7 @@ class MahasiswaSeeder extends Seeder
             ['nama'=>'Raihan', 'nis'=>'0202304','jenkel'=>'Laki Laki','alamat'=>'Bandung',
             'tgl_lahir'=>'2002-12-06','umur'=>'17'],
             ['nama'=>'Zaky', 'nis'=>'0202305','jenkel'=>'Laki Laki','alamat'=>'Bandung',
-            'tgl_lahir'=>'2001-06-16','umur'=>'18'],
+            'tgl_lahir'=>'2001-06-16','umur'=>'18']
             ];
             // masukkan data ke database
             DB::table('siswa')->insert($posts);
