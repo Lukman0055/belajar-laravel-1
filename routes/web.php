@@ -194,3 +194,13 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
                 $post->save();
                 return $post;
             });
+
+            Route::get('latihan','LatihanController@halo');
+            Route::get('p1/{a?}/{b?}','LatihanController@pertambahan');
+            Route::get('p2/{a?}/{b?}','LatihanController@perkalian');
+            Route::get('p3/{a?}/{b?}','LatihanController@pembagian');
+            Route::get('p4/{a?}/{b?}','LatihanController@pengurangan');
+            Route::get('/data-loop','LatihanController@loop');
+            Route::get('/data-loop1','LatihanController@loop1');
+
+
