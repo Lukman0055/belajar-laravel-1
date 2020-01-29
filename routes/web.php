@@ -202,5 +202,16 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
             Route::get('p4/{a?}/{b?}','LatihanController@pengurangan');
             Route::get('/data-loop','LatihanController@loop');
             Route::get('/data-loop1','LatihanController@loop1');
+            Route::get('/data-loop2','LatihanController@loop2');
+            Route::get('/data-loop3','TabunganController@index');
+            Route::get('/data-loop4/{id}','TabunganController@show');
+            Route::get('/data-loop5/{n}/{nm}/{k}/{j}','TabunganController@store');
+            Route::get('/data-loop6/{id}/{n}/{nm}/{k}/{j}','TabunganController@edit');
 
+
+            Route::get('/tgs-uk','CostumerController@index');
+            Route::get('/tgs-uk1/{id}','CostumerController@show');
+            Route::get('/tgs-uk2/{id}','CostumerController@delete');
+            Route::get('/tgs-uk3/{cc}/{nm}/{em}/{ct}/{cy}/{add}/{cn}','CostumerController@store');
+            Route::get('/tgs-uk4/{id}/{cc}/{nm}/{em}/{ct}/{cy}/{add}/{cn}','CostumerController@edit');
 

@@ -113,43 +113,20 @@ class LatihanController extends Controller
 
     public function loop2()
     {
-        $data= [['Nama'=>'Hari','Agama'=>'Islam','Alamat'=>'Cisirung','Jenkel'=>'Laki Laki','Jabatan'=>'Manager','Jam_kerja'=>'200'],
+        $data= [['Nama'=>'Ramle','Agama'=>'Islam','Alamat'=>'Cisirung','Jenkel'=>'Laki Laki','Jabatan'=>'Manager','Jam_kerja'=>'220'],
                 ['Nama'=>'Kamir','Agama'=>'Islam','Alamat'=>'Cisirung','Jenkel'=>'Laki Laki','Jabatan'=>'Sektretaris','Jam_kerja'=>'250'],
                 ['Nama'=>'Dobleh','Agama'=>'Islam','Alamat'=>'Cisirung','Jenkel'=>'Laki Laki','Jabatan'=>'Staff','Jam_kerja'=>'200']
             ];
             foreach ($data as $val => $key) {
             if ($key['Jabatan'] == 'Manager') {
-                    $gaji = 5000000;
-                if ($key['Jam_kerja']>= 250) {
-                    $bonus = $gaji/10;
-                }
-                elseif ($key['Jam_kerja']>= 200) {
-                    $bonus = $gaji*5/100;
-                }
-                else {
-                    $bonus = 0;
-                }
-                $gaji_b = $gaji+$bonus;
-                $ptng = $gaji_b *2.5/100;
-                $total = $gaji_b-$ptng;
+                $gaji = 5000000;
             }
             elseif ($key['Jabatan'] == 'Sekretaris') {
                 $gaji = 3500000;
-            if ($key['Jam_kerja']>= 250) {
-                $bonus = $gaji/10;
             }
-            elseif ($key['Jam_kerja']>= 200) {
-                $bonus = $gaji*5/100;
-            }
-            else {
-                $bonus = 0;
-            }
-                $gaji_b = $gaji+$bonus;
-                $ptng = $gaji_b *2.5/100;
-                $total = $gaji_b-$ptng;
-        }
             elseif ($key['Jabatan'] == 'Staff') {
                 $gaji = 2500000;
+            }
             if ($key['Jam_kerja']>= 250) {
                 $bonus = $gaji/10;
             }
@@ -162,8 +139,17 @@ class LatihanController extends Controller
             $gaji_b = $gaji+$bonus;
             $ptng = $gaji_b *2.5/100;
             $total = $gaji_b-$ptng;
-        }
 
+        echo    "Nama : ".$key['Nama'],
+        " <br>Agama: ".$key['Agama'],
+        " <br>Alamat : ".$key['Alamat'],
+        " <br>Jabatan : ".$key['Jabatan'],
+        " <br>Jam Kerja : ".$key['Jam_kerja'],
+        " <br>Gaji : ".$gaji_b,
+        " <br>Bonus : ".$bonus,
+        " <br>Potongan : ".$ptng,
+        " <br>Gaji Total : ".$total.
+        "<hr>";
             }
         }
     }
