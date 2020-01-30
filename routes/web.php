@@ -193,7 +193,7 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
                 $post->Stok = $Stok;
                 $post->save();
                 return $post;
-            });
+            }   );
 
             Route::get('latihan','LatihanController@halo');
             Route::get('p1/{a?}/{b?}','LatihanController@pertambahan');
@@ -214,4 +214,11 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
             Route::get('/tgs-uk2/{id}','CostumerController@delete');
             Route::get('/tgs-uk3/{cc}/{nm}/{em}/{ct}/{cy}/{add}/{cn}','CostumerController@store');
             Route::get('/tgs-uk4/{id}/{cc}/{nm}/{em}/{ct}/{cy}/{add}/{cn}','CostumerController@edit');
+
+
+            // /passing data
+            Route::get('pass','PracticeController@pass');
+            Route::get('pass1','PracticeController@pass1');
+            Route::get('pass2','PracticeController@pass2');
+
 
