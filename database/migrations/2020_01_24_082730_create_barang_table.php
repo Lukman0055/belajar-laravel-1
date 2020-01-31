@@ -22,6 +22,7 @@ class CreateBarangTable extends Migration
             $table->string('Jenis_brg');
             $table->integer('Harga_brg');
             $table->integer('Stok');
+            $table->string('Penerima');
             $table->timestamps();
         });
     }

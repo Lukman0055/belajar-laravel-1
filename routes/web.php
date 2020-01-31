@@ -218,7 +218,9 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
 
             // /passing data
             Route::get('pass','PracticeController@pass');
-            Route::get('pass1','PracticeController@pass1');
-            Route::get('pass2','PracticeController@pass2');
-
+            Route::get('latihan1','PracticeController@pass1');
+            Route::get('latihan2','PracticeController@pass2');
+            Route::get('latihan3/{id}','PracticeController@pass3');
+            Route::get('barang','BarangController@index');
+            Route::get('barang1/{id}','BarangController@index1');
 
