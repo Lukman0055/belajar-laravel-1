@@ -224,3 +224,80 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a = null,$b = null,$c = null)
             Route::get('barang','BarangController@index');
             Route::get('barang1/{id}','BarangController@index1');
 
+
+
+
+// SEMESTER 2
+            Route::get('/', function(){
+        return view('welcome');
+});
+use App\Mahasiswa;
+use App\Hobbi;
+use App\Dosen;
+
+Route::get('relasi-1', function(){
+
+    // memilih data mahasiswa yng memiliki nim
+    $mhs = Mahasiswa::where('nim','=','1010101')->first();
+
+    // menampilkan data wali dari mahasiswa yang dipilih
+    return $mhs->wali->nama;
+});
+
+Route::get('relasi-2', function(){
+
+    $mhs = Mahasiswa::where('nim','=','1010101')->first();
+    return $mhs->wali->nama;
+});
+
+Route::get('relasi-3', function(){
+    $dosen = Dosen::where('nama', '=', 'abdul')->first();
+    foreach ($dosen->mahasiswa as $temp)
+    echo '<li>Nama : '.$temp->nama.
+    '<strong> '.$temp->nim. '</strong>
+    </li>';
+});
+
+Route::get('relasi-4', function(){
+    $dadang = Mahasiswa::where('nama', '=', 'pipi')->first();
+    foreach($dadang->hobbi as $temp)
+    echo '<li>' .$temp->hobbi.'</li>';
+});
+
+Route::get('relasi-5', function(){
+    $gm = Hobbi::where('hobbi', '=', 'game mobile')->first();
+    foreach($gm->mahasiswa as $temp){
+    echo '<li>Nama : ' .$temp->nama.
+    '<strong> '.$temp->nim.'</strong>
+    </li>';}
+});
+
+Route::get('relasi-join', function(){
+    //join laravel
+    //Sql = mahasiswaa;;with('wali')->get();
+    $sql = DB::table('mahasiswas')
+    ->select('mahasiswas.nama','mahasiswas.nim',
+            'walis.nama as nama_wali')
+    ->join('walis','walis.id_mahasiswa','=','mahasiswas.id')
+    ->get();
+    dd($sql);
+});
+
+Route::get('eloquent', function(){
+    $mahasiswa = Mahasiswa::with('dosen','hobbi','wali')->get();
+    return view('eloquent',compact('mahasiswa'));
+});
+
+Route::get('eloquent1', function(){
+    $mahasiswa = Mahasiswa::with('dosen','hobbi','wali')->get()->take(1);
+    return view('eloquent1',compact('mahasiswa'));
+});
+
+Route::get('latihan-eloquent', function(){
+    $sql = DB::table('mahasiswas')
+    ->select('mahasiswas.nama','walis.nama as nama_wali','dosens.nama as nama_dosen','dosens.nip')
+    ->join('walis','walis.id_mahasiswa','=','mahasiswas.id')
+    ->join('dosens','dosens.id','=','mahasiswas.id_dosen')
+    ->get();
+    dd($sql);
+});
